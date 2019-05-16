@@ -117,7 +117,8 @@ function banner() {
     echo -e "${r} ___/ / / / / /_/ / /  / /_ ${b}  / / / / / / ,<"
     echo -e "${r}/____/_/ /_/\____/_/   \__/${b}  /_/_/_/ /_/_/|_| "
     echo -e "${n}_______________________________________________"
-    echo -e "    ${g}[${w}+${g}] ${n}Tools Short link Create By \e[4m${c}Dfv47${n} "
+    echo -e "    ${g}[${w}+${g}] ${n}Tools Short link Create By \e[4m${c}4K17${n} "
+    echo -e "    ${g}[${w}+${g}] ${n}Thanks to Black coder crush"
     echo -e "${n}———————————————————————————————————————————————\n"
 }
 clear
