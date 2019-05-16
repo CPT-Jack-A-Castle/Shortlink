@@ -1,4 +1,4 @@
-# Tools Shortlink Create By 4K17 And Dfv47
+# Tools Shortlink Create By 4K17
 # Dont Not Recode
 
 How To Install Tools Shortlink in Termux
