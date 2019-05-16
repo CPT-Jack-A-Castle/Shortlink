@@ -10,6 +10,5 @@ $ cd Shortlink
 $ bash short.sh
 ```
 
+_Tools ini di buat khusus termux jadi kalo ada os lain yang make dan error bukan tanggung jawab admin_
 Gunakan Dengan Bijak
-
-
