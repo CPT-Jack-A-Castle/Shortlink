@@ -11,7 +11,7 @@ try:
     import requests
     from bs4 import BeautifulSoup
 except ImportError:
-    print("Module urllib3 belom di instal!!")
+    print("Module requests belom di instal!!")
     print("Tolong install module terlebih dahulu")
     exit()
 
