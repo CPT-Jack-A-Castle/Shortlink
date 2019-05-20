@@ -11,8 +11,7 @@ try:
     import requests
     from bs4 import BeautifulSoup
 except ImportError:
-    print("Module requests belom di instal!!")
-    print("Tolong install module terlebih dahulu")
+    print("Please install module requests and bs4!")
     exit()
 
 
@@ -21,7 +20,7 @@ def shortlink(url):
         'url': url
     }
     req = requests.post(url='http://www.portchecker.us/short_link.php', data=data).text
-    hasil = BeautifulSoup(req, 'html.parser').find('input', {'id': 'myInput'})
+    hasil = BeautifulSoup(req, features='html.parser').find('input', {'id': 'myInput'})
     if (hasil == None):
         link = 'None'
     else:
