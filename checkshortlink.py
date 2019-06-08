@@ -16,7 +16,7 @@ class checkShortlink:
         self.url = 'http://checkshorturl.com/expand.php'
         self.session = requests.Session()
         self.data = {
-            'url': url
+            'u': url
         }
         try:
             self.req = self.session.post(self.url, data=self.data, allow_redirects=True)
@@ -38,4 +38,22 @@ class checkShortlink:
         print("Title : {}".format(self.title))
         print("Description : {}".format(self.description))
         print("Keywords : {}".format(self.keywords))
-checkShortlink('https://tinyurl.com/y3rltmq9')
+
+web = input(str('Masukan website : '))
+if 'tinyurl.com' in web:
+    checkShortlink(web)
+elif 't.co' in web:
+    checkShortlink(web)
+elif 'bit.ly' in web:
+    checkShortlink(web)
+elif 'goo.gl' in web:
+    checkShortlink(web)
+elif 'amzn.to' in web:
+    checkShortlink(web)
+elif 'ow.ly' in web:
+    checkShortlink(web)
+elif 'youtu.be' in web:
+    checkShortlink(web)
+else:
+    print("Masukan shortlink yang benar!!")
+    print("Shortlink yang di support : t.co, goo.gl, bit.ly, amzn.to, tinyurl.com, ow.ly, youtu.be")
