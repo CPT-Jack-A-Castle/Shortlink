@@ -24,6 +24,12 @@ class checkShortlink:
             print("ERROR: Jalankan ulang ini program!")
             sys.exit(0)
         self.soup = BeautifulSoup(self.req.text, features='html.parser')
+        if "Please, provide a valid shortened URL." in self.soup.find_all('p')[4].get_text():
+            print("ERROR : Harap berikan URL singkat yang valid.")
+            sys.exit(1)
+        elif "Houston, we have a problem..." in self.soup.find_all('p')[4].get_text():
+            print("ERROR : URL shortlink bermasalah!!")
+            sys.exit(1)
         self.author = self.soup.find_all('td')[19].get_text()
         self.longURL = self.soup.find_all('td')[1].find('a').get('href')
         self.shortURL = self.soup.find_all('td')[5].get_text()
@@ -38,22 +44,8 @@ class checkShortlink:
         print("Title : {}".format(self.title))
         print("Description : {}".format(self.description))
         print("Keywords : {}".format(self.keywords))
-
+#
 web = input(str('Masukan website : '))
-if 'tinyurl.com' in web:
-    checkShortlink(web)
-elif 't.co' in web:
-    checkShortlink(web)
-elif 'bit.ly' in web:
-    checkShortlink(web)
-elif 'goo.gl' in web:
-    checkShortlink(web)
-elif 'amzn.to' in web:
-    checkShortlink(web)
-elif 'ow.ly' in web:
-    checkShortlink(web)
-elif 'youtu.be' in web:
-    checkShortlink(web)
-else:
-    print("Masukan shortlink yang benar!!")
-    print("Shortlink yang di support : t.co, goo.gl, bit.ly, amzn.to, tinyurl.com, ow.ly, youtu.be")
+if not web.startswith('http'):
+    web = 'http://' + web
+checkShortlink(web)
