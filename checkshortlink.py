@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
+# Only for education and learning
 
 import os, sys, time
 
