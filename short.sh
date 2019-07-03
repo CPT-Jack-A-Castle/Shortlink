@@ -47,29 +47,6 @@ sltinyurl() {
 	echo -e "  ${c}[${b}+${c}] ${g}Result ${r}: ${w}${link}${n}"
 	echo -e " ${y}[${r}+${y}] ${b}============================== ${y}[${r}+${y}]"
 }
-slportchecker() {
-	echo -ne "\n ${b}[${o}+${b}] ${n}Enter website : "
-	read web
-	file='shortlink.html'
-	if [[ -e $file ]]; then
-		rm -rf $file
-	fi
-	req=$( curl -X POST -d "url=${web}" http://www.portchecker.us/short_link.php 2> /dev/null > $file)
-	link=$( grep -o 'value=['"'"'"][^"'"'"']*['"'"'"]' $file | sed -e 's/^value=["'"'"']//' -e 's/["'"'"']$//' )
-	if [[ -z $link ]]; then
-		error=$( grep -Po '<strong>\K.*?(?=>)' $link | sed -e 's/<\/strong//g' )
-		printf "\n"
-		echo -e " ${w}[[ ${r}! ${w}]] ${r}ERROR ${y}: ${r}${error}${n}"
-		sleep 2
-		bash $0
-	else
-		printf "\n"
-		echo -e " ${y}[${r}+${y}] ${b}============================== ${y}[${r}+${y}]"
-		echo -e "  ${c}[${b}+${c}] ${g}Link ${r}: ${w}${web}${n}"
-		echo -e "  ${c}[${b}+${c}] ${g}Result ${r}: ${w}${link}${n}"
-		echo -e " ${y}[${r}+${y}] ${b}============================== ${y}[${r}+${y}]"
-	fi
-}
 about() {
 	echo -e "\t\t   ${g}About${n}" | pv -qL 8
 	echo -e "\t${n}---------------------------" | pv -qL 15
@@ -107,7 +84,7 @@ main() {
 	fi
 	dependencies # call function dependencies
 	banner # call function banner
-	Menu=( "Shortlink Tinyurl" "Shortlink portchecker" "Shortlink all" "About" "Exit" )
+	Menu=( "Shortlink Tinyurl" "About" "Exit" )
 	count=1
 	for menu in "${Menu[@]}"; do
 		echo -e "\t${c}[${w}${count}${c}] ${o}${menu}"
@@ -124,12 +101,8 @@ main() {
 	elif [[ $input -eq 1 ]]; then
 		sltinyurl
 	elif [[ $input -eq 2 ]]; then
-		slportchecker
-	elif [[ $input -eq 3 ]]; then
-		slAll
-	elif [[ $input -eq 4 ]]; then
 		about
-	elif [[ $input -eq 5 ]]; then
+	elif [[ $input -eq 3 ]]; then
 		clear
 		echo -e "Bye :)"
 	else
